@@ -1,0 +1,12 @@
+{
+  "name": "wp-sun-auto",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "sass": "sass --watch sass/style.scss style.css",
+    "build": "sass --style=compressed --no-source-map sass/style.scss style.css"
+  },
+  "devDependencies": {
+    "sass": "^1.77.8"
+  }
+}

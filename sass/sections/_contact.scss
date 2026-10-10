@@ -1,0 +1,356 @@
+// ======================================================
+// Contact
+// ======================================================
+
+.contact {
+    padding: 4rem 0 5rem;
+
+    &__header {
+        margin-bottom: 2.5rem;
+
+        text-align: center;
+    }
+
+    &__title {
+        margin: 0;
+
+        color: #de6f6a;
+
+        font-size: clamp(2.4rem, 4vw, 3.4rem);
+        font-weight: 700;
+        line-height: 1.2;
+
+        text-shadow: 0 3px 7px rgb(0 0 0 / 8%);
+    }
+
+    &__divider {
+        display: block;
+
+        width: 38px;
+        height: 4px;
+
+        margin: 1rem auto 0;
+
+        background: #de6f6a;
+
+        border-radius: 999px;
+    }
+
+    &__content {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: stretch;
+        gap: 2rem;
+
+        max-width: 1180px;
+        margin-inline: auto;
+    }
+
+
+    // --------------------------------------------------
+    // Map
+    // --------------------------------------------------
+
+    &__map {
+        min-width: 0;
+
+        overflow: hidden;
+
+        background: #f5f5f5;
+
+        border: 1px solid #ebe6df;
+        border-radius: 24px;
+
+        box-shadow: 0 12px 30px rgb(0 0 0 / 9%);
+    }
+
+    &__map-frame {
+        display: block;
+
+        width: 100%;
+        height: 100%;
+        min-height: 590px;
+
+        border: 0;
+    }
+
+
+    // --------------------------------------------------
+    // Form card
+    // --------------------------------------------------
+
+    &__form-card {
+        padding: 2.5rem;
+
+        background: #fff;
+
+        border: 1px solid #ebe6df;
+        border-radius: 24px;
+
+        box-shadow: 0 12px 30px rgb(0 0 0 / 9%);
+    }
+
+    &__form-heading {
+        margin-bottom: 2rem;
+    }
+
+    &__form-title {
+        margin: 0 0 0.6rem;
+
+        color: #4f515c;
+
+        font-size: 1.6rem;
+        font-weight: 700;
+        line-height: 1.4;
+    }
+
+    &__form-intro {
+        margin: 0;
+
+        color: #70727c;
+
+        font-size: 0.95rem;
+        line-height: 1.75;
+    }
+}
+
+
+// ======================================================
+// Contact Form
+// ======================================================
+
+.contact-form {
+    display: grid;
+    gap: 1.5rem;
+
+    &__row {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.25rem;
+    }
+
+    &__field {
+        display: grid;
+        gap: 0.55rem;
+    }
+
+    &__label {
+        display: flex;
+        align-items: center;
+        gap: 0.55rem;
+
+        color: #555762;
+
+        font-size: 0.95rem;
+        font-weight: 700;
+        line-height: 1.4;
+    }
+
+   &__required {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        padding: 0.2rem 0.45rem;
+
+        background: #fff1ed;
+        color: #9f3f3a;
+
+        border-radius: 999px;
+
+        font-size: 0.65rem;
+        font-weight: 700;
+    }
+
+    &__input,
+    &__textarea {
+        width: 100%;
+
+        border: 1px solid #ddd7cf;
+        border-radius: 10px;
+
+        background: #faf9f7;
+        color: #4f515c;
+
+        font: inherit;
+        font-size: 1rem;
+
+        transition:
+            border-color 160ms ease,
+            background 160ms ease,
+            box-shadow 160ms ease;
+
+        &:hover {
+            border-color: #cfc7bc;
+        }
+
+        &:focus {
+            outline: none;
+
+            border-color: #f39800;
+            background: #fff;
+
+            box-shadow: 0 0 0 4px rgb(243 152 0 / 12%);
+        }
+    }
+
+    &__input {
+        min-height: 50px;
+
+        padding: 0.7rem 0.9rem;
+    }
+
+    &__textarea {
+        min-height: 180px;
+
+        padding: 0.9rem;
+
+        line-height: 1.7;
+
+        resize: vertical;
+    }
+
+
+    // --------------------------------------------------
+    // Anti-spam honeypot
+    // --------------------------------------------------
+
+    &__honeypot {
+        position: absolute;
+
+        width: 1px;
+        height: 1px;
+
+        overflow: hidden;
+
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+    }
+
+
+    // --------------------------------------------------
+    // Submit
+    // --------------------------------------------------
+
+    &__submit {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.8rem;
+
+        min-height: 54px;
+
+        padding: 0.8rem 2rem;
+
+        border: 0;
+        border-radius: 10px;
+
+        background: #f39800;
+        color: #fff;
+
+        font: inherit;
+        font-size: 1.05rem;
+        font-weight: 700;
+
+        cursor: pointer;
+
+        box-shadow: 0 7px 16px rgb(243 152 0 / 20%);
+
+        transition:
+            transform 160ms ease,
+            filter 160ms ease,
+            box-shadow 160ms ease;
+
+        &:hover {
+            transform: translateY(-2px);
+            filter: brightness(0.97);
+
+            box-shadow: 0 10px 20px rgb(243 152 0 / 25%);
+        }
+
+        &:focus-visible {
+            outline: 3px solid rgb(243 152 0 / 30%);
+            outline-offset: 4px;
+        }
+    }
+}
+
+
+// ======================================================
+// Tablet
+// ======================================================
+
+@media (max-width: 900px) {
+
+    .contact {
+
+        &__content {
+            grid-template-columns: 1fr;
+
+            max-width: 700px;
+        }
+
+        &__map-frame {
+            min-height: 430px;
+        }
+    }
+}
+
+
+// ======================================================
+// Mobile
+// ======================================================
+
+@media (max-width: 700px) {
+
+    .contact {
+        padding: 3rem 0 4rem;
+
+        &__header {
+            margin-bottom: 2rem;
+        }
+
+        &__title {
+            font-size: 2.2rem;
+        }
+
+        &__divider {
+            width: 32px;
+            height: 3px;
+        }
+
+        &__content {
+            gap: 1.25rem;
+
+            padding-inline: 1rem;
+        }
+
+        &__map,
+        &__form-card {
+            border-radius: 18px;
+        }
+
+        &__map-frame {
+            min-height: 340px;
+        }
+
+        &__form-card {
+            padding: 1.5rem;
+        }
+
+        &__form-title {
+            font-size: 1.35rem;
+        }
+    }
+
+    .contact-form {
+
+        &__row {
+            grid-template-columns: 1fr;
+        }
+
+        &__submit {
+            width: 100%;
+        }
+    }
+}

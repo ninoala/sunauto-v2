@@ -1,0 +1,58 @@
+@use '../abstracts/variables' as *;
+
+
+// Base
+body {
+    background: $color-background;
+    color: $color-text;
+    font-family: $font-body;
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+// Accessibility
+.screen-reader-text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.skip-link:focus {
+    position: fixed;
+    z-index: 9999;
+    top: 1rem;
+    left: 1rem;
+    width: auto;
+    height: auto;
+    padding: 0.75rem 1rem;
+    clip: auto;
+    background: $color-background;
+}
+
+html {
+    scrollbar-gutter: stable;
+
+    &:has(.service-dialog[open]) {
+        overflow: hidden;
+    }
+}
+
+body {
+    &:has(.service-dialog[open]) {
+        overflow: hidden;
+    }
+}

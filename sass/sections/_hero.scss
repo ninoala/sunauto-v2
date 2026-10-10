@@ -1,0 +1,304 @@
+// ======================================================
+// Hero
+// ======================================================
+
+.hero {
+    position: relative;
+
+    width: min(90%, 1840px);
+    margin-inline: auto;
+
+    overflow: hidden;
+
+    border-radius: 14px;
+
+    &__panels {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 10px;
+
+        height: clamp(560px, 43vw, 700px);
+    }
+
+    &__panel {
+        min-width: 0;
+
+        border-radius: 14px;
+
+        background-image:
+            linear-gradient(
+                to bottom,
+                rgb(0 0 0 / 30%),
+                rgb(0 0 0 / 40%) 55%,
+                rgb(0 0 0 / 55%) 100%
+            ),
+            url("assets/images/hero.webp");
+
+        background-repeat: no-repeat;
+        background-size: 500% 100%;
+    }
+
+    &__panel--1 {
+        background-position: 0% center;
+    }
+
+    &__panel--2 {
+        background-position: 25% center;
+    }
+
+    &__panel--3 {
+        background-position: 50% center;
+    }
+
+    &__panel--4 {
+        background-position: 75% center;
+    }
+
+    &__panel--5 {
+        background-position: 100% center;
+    }
+
+    &__content {
+        position: absolute;
+        inset: 0;
+
+        pointer-events: none;
+    }
+
+    &__logo {
+        position: absolute;
+        top: 44%;
+        left: 50%;
+
+        width: clamp(320px, 30vw, 500px);
+        height: auto;
+
+        transform: translate(-50%, -50%);
+    }
+}
+
+
+// ======================================================
+// Moving Car + Text
+// ======================================================
+
+.animated-image {
+    position: absolute;
+    left: 0;
+    bottom: 2%;
+    z-index: 10;
+
+    display: flex;
+    align-items: center;
+
+    width: max-content;
+
+    animation: move-across 24s linear infinite;
+
+    will-change: transform;
+
+    &__car-container {
+        position: relative;
+
+        flex: 0 0 auto;
+
+        width: 12rem;
+        height: 6rem;
+    }
+
+    &__car {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+
+        width: 100%;
+        height: auto;
+    }
+
+    &__wheel-front,
+    &__wheel-back {
+        position: absolute;
+        z-index: 3;
+
+        width: 3rem;
+        height: 3rem;
+
+        animation: wheel-spin 1s linear infinite;
+    }
+
+    &__wheel-front {
+        top: 2.1rem;
+        left: 0.9rem;
+    }
+
+    &__wheel-back {
+        top: 2.1rem;
+        right: 0.75rem;
+    }
+
+    &__text {
+        margin-left: 1rem;
+
+        color: #e91e63;
+
+        font-size: clamp(1.5rem, 2vw, 2.4rem);
+        font-weight: 700;
+        line-height: 1;
+        white-space: nowrap;
+
+        text-shadow: 0 1px 3px rgb(0 0 0 / 30%);
+    }
+}
+
+
+// ======================================================
+// Animations
+// ======================================================
+
+@keyframes move-across {
+
+    from {
+        transform: translateX(100vw);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+
+@keyframes wheel-spin {
+
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+
+// ======================================================
+// Tablet + Mobile Hero
+// Switch from 5 panels to one image
+// ======================================================
+
+@media (max-width: 830px) {
+
+    .hero {
+        width: calc(100% - 2rem);
+        height: clamp(430px, 72vw, 560px);
+
+        background-image:
+            linear-gradient(
+                to bottom,
+                rgb(0 0 0 / 25%),
+                rgb(0 0 0 / 35%) 55%,
+                rgb(0 0 0 / 50%) 100%
+            ),
+            url("assets/images/hero.webp");
+
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+
+        border-radius: 12px;
+
+        &__panels {
+            display: none;
+        }
+
+        &__content {
+            position: absolute;
+            inset: 0;
+        }
+
+        &__logo {
+            top: 43%;
+
+            width: min(55vw, 380px);
+        }
+    }
+
+    .animated-image {
+
+        &__car-container {
+            width: 9rem;
+            height: 4.5rem;
+        }
+
+        &__wheel-front,
+        &__wheel-back {
+            width: 2.25rem;
+            height: 2.25rem;
+        }
+
+        &__wheel-front {
+            top: 1.58rem;
+            left: 0.68rem;
+        }
+
+        &__wheel-back {
+            top: 1.58rem;
+            right: 0.56rem;
+        }
+
+        &__text {
+            margin-left: 0.75rem;
+
+            font-size: 1.25rem;
+        }
+    }
+}
+
+
+// ======================================================
+// Phones
+// ======================================================
+
+@media (max-width: 600px) {
+
+    .hero {
+        width: calc(100% - 1rem);
+        height: 430px;
+
+        background-position: center;
+
+        &__logo {
+            top: 41%;
+
+            width: min(72vw, 310px);
+        }
+    }
+
+    .animated-image {
+        bottom: 3%;
+
+        animation-duration: 20s;
+
+        &__car-container {
+            width: 7.5rem;
+            height: 3.75rem;
+        }
+
+        &__wheel-front,
+        &__wheel-back {
+            width: 1.9rem;
+            height: 1.9rem;
+        }
+
+        &__wheel-front {
+            top: 1.3rem;
+            left: 0.55rem;
+        }
+
+        &__wheel-back {
+            top: 1.3rem;
+            right: 0.47rem;
+        }
+
+        &__text {
+            margin-left: 0.6rem;
+
+            font-size: 1rem;
+        }
+    }
+}

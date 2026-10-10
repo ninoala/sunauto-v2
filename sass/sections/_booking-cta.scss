@@ -1,0 +1,226 @@
+// ======================================================
+// Booking CTA
+// ======================================================
+
+.booking-cta {
+    padding: 3rem 1.5rem;
+
+    &__inner {
+        width: min(90%, 1000px);
+        margin-inline: auto;
+
+        text-align: center;
+    }
+
+    // ==================================================
+    // Heading
+    // ==================================================
+
+    &__title {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+
+        margin: 0 0 1.75rem;
+
+        color: #333;
+
+        font-size: clamp(1.4rem, 2vw, 2rem);
+        font-weight: 700;
+        line-height: 1.4;
+    }
+
+    &__title-text {
+        display: block;
+    }
+
+    &__wrench {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        flex: 0 0 auto;
+
+        img {
+            display: block;
+
+            width: 46px;
+            height: auto;
+        }
+    }
+
+    // ==================================================
+    // Buttons
+    // ==================================================
+
+    &__actions {
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+        gap: 1.25rem;
+    }
+
+    &__line,
+    &__phone {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        box-sizing: border-box;
+
+        width: 390px;
+        min-height: 56px;
+
+        padding: 0.75rem 1.75rem;
+
+        border-radius: 10px;
+
+        font-size: 1.15rem;
+        font-weight: 700;
+        line-height: 1.2;
+        text-decoration: none;
+
+        transition:
+            transform 180ms ease,
+            box-shadow 180ms ease,
+            background 180ms ease,
+            color 180ms ease;
+
+        &:hover {
+            transform: translateY(-2px);
+        }
+
+        &:focus-visible {
+            outline: 3px solid rgb(243 152 0 / 25%);
+            outline-offset: 3px;
+        }
+    }
+
+    // ==================================================
+    // LINE
+    // ==================================================
+
+    &__line {
+        border: 2px solid #06c755;
+
+        background: #06c755;
+        color: #fff;
+
+        box-shadow: 0 6px 14px rgb(6 199 85 / 18%);
+
+        &:hover {
+            background: #06c755;
+            color: #fff;
+
+            box-shadow: 0 9px 18px rgb(6 199 85 / 24%);
+        }
+    }
+
+    // ==================================================
+    // Phone
+    // ==================================================
+
+    &__phone {
+        gap: 0.65rem;
+
+        border: 2px solid #f39800;
+
+        background: #fff;
+        color: #4f515c;
+
+        &:hover {
+            background: #fff8ee;
+            color: #f39800;
+        }
+    }
+
+    &__phone-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        flex: 0 0 auto;
+
+        img {
+            display: block;
+
+            width: 24px;
+            height: auto;
+        }
+    }
+}
+
+
+// ======================================================
+// Mobile
+// ======================================================
+
+@media (max-width: 700px) {
+
+    .booking-cta {
+        padding: 2.5rem 1rem;
+
+        &__inner {
+            width: min(100%, 440px);
+        }
+
+        &__title {
+            gap: 0.65rem;
+
+            margin-bottom: 1.5rem;
+
+            font-size: 1.35rem;
+        }
+
+        &__wrench {
+            img {
+                width: 34px;
+            }
+        }
+
+        &__actions {
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        &__line,
+        &__phone {
+            width: 100%;
+            min-height: 56px;
+
+            padding: 0.85rem 1rem;
+
+            font-size: 1.05rem;
+        }
+
+        &__phone-icon {
+            img {
+                width: 22px;
+            }
+        }
+    }
+}
+
+
+// ======================================================
+// Very Small Screens
+// ======================================================
+
+@media (max-width: 420px) {
+
+    .booking-cta {
+
+        &__title {
+            gap: 0.45rem;
+
+            font-size: 1.2rem;
+        }
+
+        &__wrench {
+            img {
+                width: 28px;
+            }
+        }
+    }
+}

@@ -1,0 +1,32 @@
+/*!
+Theme Name: Sun Auto
+Author: Yegor Nino
+Version: 1.0.0
+Text Domain: sun-auto
+*/
+
+@use 'abstracts/functions';
+@use 'abstracts/variables';
+@use 'abstracts/mixins';
+
+@use 'base/reset';
+@use 'base/base';
+@use 'base/typography';
+
+@use 'layout/header';
+@use 'layout/footer';
+
+@use 'components/buttons';
+@use 'components/cards';
+@use 'components/forms';
+@use 'components/faq';
+
+@use 'pages/fourohfour';
+
+@use 'sections/booking-cta';
+@use 'sections/hero';
+@use 'sections/services';
+@use 'sections/news';
+@use 'sections/gallery';
+@use 'sections/company';
+@use 'sections/contact';
