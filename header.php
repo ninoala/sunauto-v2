@@ -20,6 +20,14 @@
         fetchpriority="high"
     >
 
+    <link
+        rel="preload"
+        as="image"
+        href="<?php echo esc_url(get_template_directory_uri() . '/assets/images/hero-mobile.webp'); ?>"
+        media="(max-width: 830px)"
+        fetchpriority="high"
+    >
+
     <script>
         (function(d) {
             var config = {

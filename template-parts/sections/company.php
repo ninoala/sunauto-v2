@@ -1,183 +1,162 @@
+
+<?php
+/**
+ * Company Profile.
+ *
+ * @package Sun_Auto
+ */
+
+$homepage_id = (int) get_option( 'page_on_front' );
+
+$company_name           = get_field( 'company_name', $homepage_id );
+$company_representative = get_field( 'representative_name', $homepage_id );
+$company_address        = get_field( 'company_address', $homepage_id );
+$company_phone          = get_field( 'company_phone', $homepage_id );
+$company_fax            = get_field( 'company_fax', $homepage_id );
+$company_email          = get_field( 'company_email', $homepage_id );
+$company_hours          = get_field( 'business_hours', $homepage_id );
+$company_closed         = get_field( 'closed_days', $homepage_id );
+$company_established    = get_field( 'established_date', $homepage_id );
+$company_services       = get_field( 'business_description', $homepage_id );
+$company_capital        = get_field( 'capital', $homepage_id );
+$company_technicians    = get_field( 'employee_count', $homepage_id );
+$company_payments       = get_field( 'payment_methods', $homepage_id );
+
+$phone_href = preg_replace(
+    '/[^0-9+]/',
+    '',
+    $company_phone ?? ''
+);
+?>
+
 <section class="company" id="company">
 
-	<div class="container">
+    <div class="container">
 
-		<header class="company__header">
+        <header class="company__header">
 
-			<h2 class="company__title">
-				会社概要
-			</h2>
+            <h2 class="company__title">
+                会社概要
+            </h2>
 
-			<span
-				class="company__divider"
-				aria-hidden="true"
-			></span>
+            <span
+                class="company__divider"
+                aria-hidden="true"
+            ></span>
 
-		</header>
+        </header>
 
+        <div class="company__panel">
 
-		<div class="company__panel">
+            <dl class="company__column">
 
-			<dl class="company__column">
+                <div class="company__item">
+                    <dt class="company__label">社名</dt>
+                    <dd class="company__value">
+                        <?php echo esc_html( $company_name ); ?>
+                    </dd>
+                </div>
 
-				<div class="company__item">
-					<dt class="company__label">
-						社名
-					</dt>
+                <div class="company__item">
+                    <dt class="company__label">代表取締役</dt>
+                    <dd class="company__value">
+                        <?php echo esc_html( $company_representative ); ?>
+                    </dd>
+                </div>
 
-					<dd class="company__value">
-						サンオート株式会社
-					</dd>
-				</div>
+                <div class="company__item">
+                    <dt class="company__label">所在地</dt>
+                    <dd class="company__value">
+                        <?php echo esc_html( $company_address ); ?>
+                    </dd>
+                </div>
 
+                <div class="company__item">
+                    <dt class="company__label">電話番号</dt>
+                    <dd class="company__value">
+                        <?php if ( $company_phone ) : ?>
+                            <a href="tel:<?php echo esc_attr( $phone_href ); ?>">
+                                <?php echo esc_html( $company_phone ); ?>
+                            </a>
+                        <?php endif; ?>
+                    </dd>
+                </div>
 
-				<div class="company__item">
-					<dt class="company__label">
-						代表取締役
-					</dt>
+                <div class="company__item">
+                    <dt class="company__label">FAX番号</dt>
+                    <dd class="company__value">
+                        <?php echo esc_html( $company_fax ); ?>
+                    </dd>
+                </div>
 
-					<dd class="company__value">
-						山岡 典斗（ヤマオカ フミト）
-					</dd>
-				</div>
+                <div class="company__item">
+                    <dt class="company__label">E-mail</dt>
+                    <dd class="company__value">
+                        <?php if ( $company_email ) : ?>
+                            <a href="mailto:<?php echo esc_attr( $company_email ); ?>">
+                                <?php echo esc_html( $company_email ); ?>
+                            </a>
+                        <?php endif; ?>
+                    </dd>
+                </div>
 
+                <div class="company__item">
+                    <dt class="company__label">営業時間</dt>
+                    <dd class="company__value">
+                        <?php echo nl2br( esc_html( $company_hours ?? '' ) ); ?>
+                    </dd>
+                </div>
 
-				<div class="company__item">
-					<dt class="company__label">
-						所在地
-					</dt>
+            </dl>
 
-					<dd class="company__value">
-						新潟県見附市本所町370番地1
-					</dd>
-				</div>
+            <dl class="company__column">
 
+                <div class="company__item">
+                    <dt class="company__label">定休日</dt>
+                    <dd class="company__value">
+                        <?php echo esc_html( $company_closed ); ?>
+                    </dd>
+                </div>
 
-				<div class="company__item">
-					<dt class="company__label">
-						電話番号
-					</dt>
+                <div class="company__item">
+                    <dt class="company__label">設立年月日</dt>
+                    <dd class="company__value">
+                        <?php echo esc_html( $company_established ); ?>
+                    </dd>
+                </div>
 
-					<dd class="company__value">
-						<a href="tel:0258611212">
-							0258-61-1212
-						</a>
-					</dd>
-				</div>
+                <div class="company__item">
+                    <dt class="company__label">業務内容</dt>
+                    <dd class="company__value">
+                        <?php echo nl2br( esc_html( $company_services ?? '' ) ); ?>
+                    </dd>
+                </div>
 
+                <div class="company__item">
+                    <dt class="company__label">資本金</dt>
+                    <dd class="company__value">
+                        <?php echo esc_html( $company_capital ); ?>
+                    </dd>
+                </div>
 
-				<div class="company__item">
-					<dt class="company__label">
-						FAX番号
-					</dt>
+                <div class="company__item">
+                    <dt class="company__label">整備資格者数</dt>
+                    <dd class="company__value">
+                        <?php echo nl2br( esc_html( $company_technicians ?? '' ) ); ?>
+                    </dd>
+                </div>
 
-					<dd class="company__value">
-						0258-63-4122
-					</dd>
-				</div>
+                <div class="company__item">
+                    <dt class="company__label">決済方法</dt>
+                    <dd class="company__value">
+                        <?php echo nl2br( esc_html( $company_payments ?? '' ) ); ?>
+                    </dd>
+                </div>
 
+            </dl>
 
-				<div class="company__item">
-					<dt class="company__label">
-						E-mail
-					</dt>
+        </div>
 
-					<dd class="company__value">
-						<a href="mailto:sunautomitsuke@gmail.com">
-							sunautomitsuke@gmail.com
-						</a>
-					</dd>
-				</div>
-
-
-				<div class="company__item">
-					<dt class="company__label">
-						営業時間
-					</dt>
-
-					<dd class="company__value">
-						月～金曜日 8:30～19:00<br>
-						土曜日 8:30～18:00
-					</dd>
-				</div>
-
-			</dl>
-
-
-			<dl class="company__column">
-
-				<div class="company__item">
-					<dt class="company__label">
-						定休日
-					</dt>
-
-					<dd class="company__value">
-						日曜日・祝日
-					</dd>
-				</div>
-
-
-				<div class="company__item">
-					<dt class="company__label">
-						設立年月日
-					</dt>
-
-					<dd class="company__value">
-						昭和46年4月26日
-					</dd>
-				</div>
-
-
-				<div class="company__item">
-					<dt class="company__label">
-						業務内容
-					</dt>
-
-					<dd class="company__value">
-						自動車整備、車検、新車中古車販売、各種損害保険代理店、<br>
-						オリックスカーリース取扱店
-					</dd>
-				</div>
-
-
-				<div class="company__item">
-					<dt class="company__label">
-						資本金
-					</dt>
-
-					<dd class="company__value">
-						15,000,000円
-					</dd>
-				</div>
-
-
-				<div class="company__item">
-					<dt class="company__label">
-						整備資格者数
-					</dt>
-
-					<dd class="company__value">
-						一級自動車整備士 --- 1名<br>
-						二級自動車整備士 --- 1名<br>
-						三級自動車整備士 --- 2名
-					</dd>
-				</div>
-
-
-				<div class="company__item">
-					<dt class="company__label">
-						決済方法
-					</dt>
-
-					<dd class="company__value">
-						現金、振込、クレジットカード、QRコード決済、電子マネー対応
-					</dd>
-				</div>
-
-			</dl>
-
-		</div>
-
-	</div>
+    </div>
 
 </section>

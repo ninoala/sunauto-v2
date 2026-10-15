@@ -39,10 +39,16 @@
 
         </div>
 
-        <span class="animated-image__text">
-            <p class="hero__line-text">
-                ～車検のご予約はお早めに★！LINEからもご予約いただけます～
-            </p>        
-        </span>
+       <?php
+        $hero_running_text = function_exists( 'get_field' )
+            ? get_field( 'hero_running_text' )
+            : '';
+        ?>
+
+        <?php if ( $hero_running_text ) : ?>
+            <span class="animated-image__text">
+                <?php echo esc_html( $hero_running_text ); ?>
+            </span>
+        <?php endif; ?>
 
 </section>

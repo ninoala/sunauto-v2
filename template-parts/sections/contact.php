@@ -24,6 +24,7 @@
 					class="contact__map-frame"
 					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3163.7747727672668!2d138.90445449999999!3d37.5368062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5ff503d0eb32492b%3A0x7184dc903ac3e405!2s370-1%20Honjomachi%2C%20Mitsuke%2C%20Niigata%20954-0000%2C%20Japan!5e0!3m2!1sen!2sca!4v1789740524788!5m2!1sen!2sca"
 					loading="lazy"
+					fetchpriority="low"
 					referrerpolicy="no-referrer-when-downgrade"
 					allowfullscreen
 					title="サンオート株式会社へのアクセス"

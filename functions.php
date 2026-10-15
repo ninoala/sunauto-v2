@@ -383,3 +383,139 @@ function sun_auto_handle_contact() {
         ]
     );
 }
+
+// ======================================================
+// Simplify Homepage Editor
+// Keep Gutenberg enabled for Dialogues
+// ======================================================
+
+/**
+ * Check whether a post is the static homepage.
+ */
+function sun_auto_is_homepage( $post_id ) {
+    return (int) $post_id === (int) get_option( 'page_on_front' )
+        && (int) $post_id > 0;
+}
+
+
+/**
+ * Disable Gutenberg only for the homepage.
+ */
+add_filter( 'use_block_editor_for_post', function ( $use_block_editor, $post ) {
+
+    if ( $post && sun_auto_is_homepage( $post->ID ) ) {
+        return false;
+    }
+
+    return $use_block_editor;
+
+}, 10, 2 );
+
+
+/**
+ * Hide unnecessary homepage editing features.
+ */
+add_action( 'admin_init', function () {
+
+    if (
+        ! isset( $_GET['post'] ) ||
+        ! current_user_can( 'edit_pages' )
+    ) {
+        return;
+    }
+
+    $post_id = absint( $_GET['post'] );
+
+    if ( ! sun_auto_is_homepage( $post_id ) ) {
+        return;
+    }
+
+    // Remove the default content editor.
+    remove_post_type_support( 'page', 'editor' );
+} );
+
+
+/**
+ * Remove unnecessary metaboxes on the homepage.
+ */
+add_action( 'add_meta_boxes_page', function ( $post ) {
+
+    if ( ! sun_auto_is_homepage( $post->ID ) ) {
+        return;
+    }
+
+    // Yoast SEO.
+    remove_meta_box( 'wpseo_meta', 'page', 'normal' );
+
+    // Page attributes.
+    remove_meta_box( 'pageparentdiv', 'page', 'side' );
+
+    // Featured image.
+    remove_meta_box( 'postimagediv', 'page', 'side' );
+
+    // Custom fields.
+    remove_meta_box( 'postcustom', 'page', 'normal' );
+
+    // Discussion.
+    remove_meta_box( 'commentstatusdiv', 'page', 'normal' );
+
+    // Comments.
+    remove_meta_box( 'commentsdiv', 'page', 'normal' );
+
+    // Slug.
+    remove_meta_box( 'slugdiv', 'page', 'normal' );
+
+    // Revisions.
+    remove_meta_box( 'revisionsdiv', 'page', 'normal' );
+
+}, 99 );
+
+
+/**
+ * Hide remaining homepage editor elements.
+ */
+add_action( 'admin_head-post.php', function () {
+
+    $screen = get_current_screen();
+
+    if (
+        ! $screen ||
+        $screen->post_type !== 'page' ||
+        ! isset( $_GET['post'] ) ||
+        ! sun_auto_is_homepage( absint( $_GET['post'] ) )
+    ) {
+        return;
+    }
+
+    echo '<style>
+        #postdivrich,
+        #postexcerpt,
+        #wpseo_meta,
+        #pageparentdiv,
+        #postimagediv,
+        #postcustom,
+        #commentstatusdiv,
+        #commentsdiv,
+        #slugdiv,
+        #revisionsdiv {
+            display: none !important;
+        }
+    </style>';
+} );
+
+// ======================================================
+// Hide Yoast SEO Editor Interface
+// ======================================================
+
+// Hide Yoast metabox in Classic Editor.
+add_action( 'add_meta_boxes', function () {
+
+    foreach ( get_post_types( array( 'show_ui' => true ) ) as $post_type ) {
+        remove_meta_box( 'wpseo_meta', $post_type, 'normal' );
+    }
+
+}, 999 );
+
+// Hide Yoast panels in Gutenberg.
+add_filter( 'wpseo_enable_editor_sidebar', '__return_false' );
+add_filter( 'wpseo_enable_editor_metabox', '__return_false' );
