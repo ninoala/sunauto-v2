@@ -95,10 +95,10 @@ function sun_auto_register_service_post_type(): void {
 		[
 			'labels'             => $labels,
 
-			'public'             => false,
+			'public'             => true,
 			'show_ui'            => true,
 			'show_in_rest'       => true,
-			'publicly_queryable' => false,
+			'publicly_queryable' => true,
 
 			'menu_icon'          => 'dashicons-car',
 			'menu_position'      => 20,
